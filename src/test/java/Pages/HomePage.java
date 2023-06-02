@@ -37,4 +37,12 @@ public class HomePage {
         return this;
     }
 
+    public HomePage assertPageIsOpened() {
+        Assert.assertEquals(
+                $("h1.elementor-heading-title").text(),
+                "Think different. Make different."
+        );
+        return this;
+    }
+
 }

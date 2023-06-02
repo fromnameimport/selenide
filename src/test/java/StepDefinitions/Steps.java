@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Pages.*;
 import com.beust.ah.A;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import io.cucumber.java.en.*;
 import org.checkerframework.checker.units.qual.C;
@@ -19,6 +20,8 @@ public class Steps {
     ContactPage contactPage = new ContactPage();
     CartPage cartPage = new CartPage();
     AccountPage accountPage = new AccountPage();
+    FooterMenu footerMenu = new FooterMenu();
+    SupportPage supportPage = new SupportPage();
 
     String addedItemName = "";
 
@@ -51,6 +54,22 @@ public class Steps {
         shopPage.addToCartRandomItem();
         addedItemName = shopPage.getAddedItemName();
     }
+    @Then("I click {string} button")
+    public void i_click_button(String string) {
+        footerMenu.clickButton(string);
+    }
+    @Then("I fill out, submit and verify {string} sending")
+    public void i_fill_out_submit_and_verify_sending(String string) {
+        supportPage
+                .enterName("test")
+                .enterEmail("test@test.com")
+                .enterSubject("Some technical problem")
+                .selectOption("Technical Team")
+                .selectCheckbox("Hardware Issue")
+                .selectTodayDate()
+                .clickSubmitButton()
+                .verifyIsFormSent();
+    }
 
     // navigation & search
     @Then("I go to {string}")
@@ -67,20 +86,21 @@ public class Steps {
     public void i_verify_that_the_logo_is_present_on_the_page() {
         homePage.checkForLogoVisibility();
     }
-    @Then("I verify that {string} is present")
-    public void i_verify_that_is_present(String string) {
-
-    }
-    @Then("I verify that the {string} page is present")
+//    @Then("I verify that {string} is present")
+//    public void i_verify_that_is_present(String string) {
+//
+//    }
+    @Then("I verify that {string} page is present")
     public void i_verify_that_the_page_is_present(String page) {
         switch (page) {
-            case "Home":  break;
-            case "About":  aboutPage.assertPageIsOpened(); break;
-            case "Shop": shopPage.assertPageIsOpened(); break;
-            case "Contact us": contactPage.assertPageIsOpened(); break;
-            case "My account":  break;
-            case "Blog": blogPage.assertPageIsOpened(); break;
-            case "Cart":  break;
+            case "Home" -> homePage.assertPageIsOpened();
+            case "About" -> aboutPage.assertPageIsOpened();
+            case "Shop" -> shopPage.assertPageIsOpened();
+            case "Contact us" -> contactPage.assertPageIsOpened();
+            case "My account" -> accountPage.assertPageIsOpened();
+            case "Blog" -> blogPage.assertPageIsOpened();
+            case "Cart" -> cartPage.assertPageIsOpened();
+            case "Support form" -> System.out.println("cv");
         }
     }
     @Then("I verify that added item is added to cart")

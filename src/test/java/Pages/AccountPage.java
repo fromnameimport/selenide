@@ -3,6 +3,7 @@ package Pages;
 import com.beust.ah.A;
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -23,6 +24,13 @@ public class AccountPage {
     }
     public AccountPage isLoginErrorPresent() {
         $("ul.woocommerce-error").shouldBe(Condition.visible);
+        return this;
+    }
+    public AccountPage assertPageIsOpened() {
+        Assert.assertEquals(
+                $(By.className("tg-page-header__title")).text(),
+                "My account"
+        );
         return this;
     }
 }
