@@ -1,9 +1,7 @@
 package Pages;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.ex.ElementNotFound;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -13,13 +11,13 @@ import static com.codeborne.selenide.Selenide.$$;
 public class HeaderMenu {
     public void goToPage(String page)  {
         switch (page) {
-            case "Home page": $(By.linkText("Home")).click(); break;
-            case "About page":  $(By.linkText("About")).click(); break;
-            case "Shop page": $(By.linkText("Shop")).click(); break;
-            case "Contact us page": $(By.linkText("Contact")).click(); break;
-            case "My account page": $(By.linkText("My account")).click(); break;
-            case "Blog page": $(By.linkText("Blog")).click(); break;
-            case "Cart page": $(By.className("cart-page-link")).click(); break;
+            case "Home page" -> $(By.linkText("Home")).click();
+            case "About page" -> $(By.linkText("About")).click();
+            case "Shop page" -> $(By.linkText("Shop")).click();
+            case "Contact us page" -> $(By.linkText("Contact")).click();
+            case "My account page" -> $(By.linkText("My account")).click();
+            case "Blog page" -> $(By.linkText("Blog")).click();
+            case "Cart page" -> $(By.className("cart-page-link")).click();
         }
     }
     public HeaderMenu search(String searchString) {

@@ -1,15 +1,9 @@
 package StepDefinitions;
 
 import Pages.*;
-import com.beust.ah.A;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import io.cucumber.java.en.*;
-import org.checkerframework.checker.units.qual.C;
-import org.openqa.selenium.By;
 import org.testng.Assert;
-
-import static com.codeborne.selenide.Selenide.$;
 
 public class Steps {
     HomePage homePage = new HomePage();
@@ -86,10 +80,6 @@ public class Steps {
     public void i_verify_that_the_logo_is_present_on_the_page() {
         homePage.checkForLogoVisibility();
     }
-//    @Then("I verify that {string} is present")
-//    public void i_verify_that_is_present(String string) {
-//
-//    }
     @Then("I verify that {string} page is present")
     public void i_verify_that_the_page_is_present(String page) {
         switch (page) {
@@ -100,7 +90,7 @@ public class Steps {
             case "My account" -> accountPage.assertPageIsOpened();
             case "Blog" -> blogPage.assertPageIsOpened();
             case "Cart" -> cartPage.assertPageIsOpened();
-            case "Support form" -> System.out.println("cv");
+            case "Support form" -> supportPage.assertPageIsOpened();
         }
     }
     @Then("I verify that added item is added to cart")

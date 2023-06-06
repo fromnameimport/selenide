@@ -3,10 +3,19 @@ package Pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class SupportPage {
+
+    public SupportPage assertPageIsOpened() {
+        Assert.assertEquals(
+                $("h1.tg-page-header__title").text(),
+                "Support Form"
+        );
+        return this;
+    }
 
     public SupportPage enterName(String name) {
         $(".support-name input").val(name);
