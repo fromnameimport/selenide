@@ -28,7 +28,6 @@ public class HeaderMenu {
         return this;
     }
     public HeaderMenu verifySearchResults(String searchString) {
-
         ElementsCollection results = $$("h2.entry-title > a");
         boolean result = results.texts().contains(searchString);
         if (result) {

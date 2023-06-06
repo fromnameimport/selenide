@@ -31,17 +31,9 @@ public class HomePage {
         Selenide.open(homePageUrl);
     }
 
-    // navigation
-    public HomePage goToGetStartedPage() {
-        getStartedButton().click();
-        return this;
-    }
-
+    // asserts
     public HomePage assertPageIsOpened() {
-        Assert.assertEquals(
-                $("h1.elementor-heading-title").text(),
-                "Think different. Make different."
-        );
+        Assert.assertEquals($("h1.elementor-heading-title").text(), "Think different. Make different.");
         return this;
     }
 

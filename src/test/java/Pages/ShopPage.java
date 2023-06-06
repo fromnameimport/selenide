@@ -49,10 +49,7 @@ public class ShopPage {
         return this;
     }
     public ShopPage assertPageIsOpened() {
-        Assert.assertEquals(
-                $(By.className("tg-page-header__title")).text(),
-                "Shop"
-        );
+        Assert.assertEquals($(By.className("tg-page-header__title")).text(), "Shop");
         return this;
     }
 }

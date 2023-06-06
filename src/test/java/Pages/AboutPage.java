@@ -8,10 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class AboutPage {
 
     public AboutPage assertPageIsOpened() {
-        Assert.assertEquals(
-                $(By.className("tg-page-header__title")).text(),
-                "About"
-        );
+        Assert.assertEquals($(By.className("tg-page-header__title")).text(), "About");
         return this;
     }
 }

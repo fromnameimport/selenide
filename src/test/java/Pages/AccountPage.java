@@ -26,10 +26,7 @@ public class AccountPage {
         return this;
     }
     public AccountPage assertPageIsOpened() {
-        Assert.assertEquals(
-                $(By.className("tg-page-header__title")).text(),
-                "My account"
-        );
+        Assert.assertEquals($(By.className("tg-page-header__title")).text(), "My account");
         return this;
     }
 }

@@ -10,10 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class SupportPage {
 
     public SupportPage assertPageIsOpened() {
-        Assert.assertEquals(
-                $("h1.tg-page-header__title").text(),
-                "Support Form"
-        );
+        Assert.assertEquals($("h1.tg-page-header__title").text(), "Support Form");
         return this;
     }
 

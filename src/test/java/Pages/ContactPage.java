@@ -33,10 +33,7 @@ public class ContactPage {
         return this;
     }
     public ContactPage assertPageIsOpened() {
-        Assert.assertEquals(
-                $(By.className("tg-page-header__title")).text(),
-                "Contact"
-        );
+        Assert.assertEquals($(By.className("tg-page-header__title")).text(), "Contact");
         return this;
     }
 }

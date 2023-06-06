@@ -14,10 +14,7 @@ public class CartPage {
         return $("td.product-name > a").text();
     }
     public CartPage assertPageIsOpened() {
-        Assert.assertEquals(
-                $(By.className("tg-page-header__title")).text(),
-                "Cart"
-        );
+        Assert.assertEquals($(By.className("tg-page-header__title")).text(), "Cart");
         return this;
     }
     public CartPage uploadFile() {
