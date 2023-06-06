@@ -24,10 +24,6 @@ public class Steps {
     public void i_open_test_site_homepage() {
         homePage.open();
     }
-    @Then("Close browser")
-    public void close_browser() {
-        Selenide.closeWebDriver();
-    }
     @Then("I fill out, submit 'Send Us Message' and verify form sending")
     public void i_fill_out_and_submit_form() {
         contactPage.enterName("Dmytro")
@@ -63,6 +59,14 @@ public class Steps {
                 .selectTodayDate()
                 .clickSubmitButton()
                 .verifyIsFormSent();
+    }
+    @Then("I filter {string} items")
+    public void i_filter_items(String string) {
+        shopPage.filterItems(string);
+    }
+    @Then("I upload text file")
+    public void i_upload_text_file() {
+        cartPage.uploadFile();
     }
 
     // navigation & search
@@ -104,5 +108,13 @@ public class Steps {
     @Then("I verify search results for {string}")
     public void i_verify_search_results_for(String string) {
         headerMenu.verifySearchResults(string);
+    }
+    @Then("I verify filter for {string} is applied")
+    public void i_verify_filter_for_is_applied(String string) {
+        shopPage.assertFilterIsApplied(string);
+    }
+    @Then("I verify that file if uploaded")
+    public void i_verify_that_file_if_uploaded() {
+        cartPage.assertFileIsUploaded();
     }
 }

@@ -1,6 +1,7 @@
 package Pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -22,6 +23,29 @@ public class ShopPage {
         addedItemName = itemNames.get(index).text();
         addButtons.get(index).click();
         Thread.sleep(1000);
+        return this;
+    }
+    public ShopPage filterItems(String filter) {
+        switch (filter) {
+            case "Clothes" -> $(By.linkText("Clothes")).click();
+            case "Shoes" -> $(By.linkText("Shoes")).click();
+            case "Uncategorized" -> $(By.linkText("Uncategorized")).click();
+            case "Watch" -> $(By.linkText("Watch")).click();
+        }
+        return this;
+    }
+    public ShopPage assertFilterIsApplied(String filter) {
+        ElementsCollection col = $$("#primary > ul > li");
+        for (SelenideElement el : col) {
+            String itemClasses = el.getAttribute("class");
+            switch (filter) {
+                case "Clothes" -> Assert.assertTrue(itemClasses.contains("product_cat-clothes"));
+                case "Shoes" -> Assert.assertTrue(itemClasses.contains("product_cat-shoes"));
+                case "Uncategorized" -> Assert.assertTrue(itemClasses.contains("product_cat-uncategorized"));
+                case "Watch" -> Assert.assertTrue(itemClasses.contains("product_cat-watch"));
+                default -> Assert.fail();
+            }
+        }
         return this;
     }
     public ShopPage assertPageIsOpened() {
